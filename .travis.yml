@@ -5,7 +5,7 @@ services:
   - docker
 before_install:
   - sudo apt-get -qq update
-  - sudo apt install -t trusty-backports lxd lxd-client
+  - sudo apt install -t trusty-backports lxd lxd-client lxc-dev
   - sudo lxd init --auto;
   - sudo usermod -a -G lxd travis
 install:
