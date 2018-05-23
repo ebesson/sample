@@ -1,0 +1,18 @@
+---
+sudo: required
+language: python
+services:
+  - docker
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt install -t trusty-backports lxd lxd-client
+  - sudo lxd init --auto;
+  - sudo usermod -a -G lxd travis
+install:
+  - sudo pip install ansible==2.4.2.0
+  - sudo pip install testinfra==1.10.1
+  - sudo pip install pytest==3.3.0
+  - sudo pip install molecule==2.5.0
+  - sudo pip install lxc-python2
+script:
+  - sudo su travis -c 'molecule test'
