@@ -1,0 +1,6 @@
+{
+  "tests/test_cozy.py::test_cozy_directories[ansible://cozy-instance]": true, 
+  "tests/test_default.py::test_couchdb[ansible://cozy-instance]": true, 
+  "tests/test_default.py::test_cozy[ansible://cozy-instance]": true, 
+  "tests/test_postfix.py::test_postfix_listen_port[ansible://cozy-instance]": true
+}

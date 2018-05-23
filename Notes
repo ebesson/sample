@@ -1,0 +1,90 @@
+https://forum.fivem.net/t/how-to-setup-couchdb-2-0-0-1-on-ubuntu-debian-and-more/25468
+
+https://raw.githubusercontent.com/afiskon/install-couchdb/master/install-couchdb.sh
+
+
+sudo /usr/local/bin/cozy-stack config passwd /etc/cozy/
+
+cozy-stack instances add --host 0.0.0.0
+cozy-stack instances add --apps drive,photos,collect,settings,onboarding --passphrase test "cozy.tools"
+cozy-stack instances add --apps drive,photos,settings --passphrase cozy "etienne.mycozy:8080"
+cozy-stack instances add --apps drive,photos,collect,settings,onboarding --passphrase test "test.mycozy"
+
+docker run --rm -it gozy
+
+cozy-stack instances add --apps drive,photos,collect,settings,onboarding --passphrase test "cozy.tools:443"
+
+cozy-stack instances add --apps drive,photos,collect,settings,onboarding --passphrase test "ebe.cozy.tools:443"
+
+cozy-stack instances add --apps drive,photos,collect,settings,onboarding --passphrase test "cozy.tools"
+
+- name: Generic question with multiple different responses
+  expect:
+    command: /usr/local/bin/cozy-stack config passwd /etc/cozy/
+    responses:
+      Passphrase:
+        - test1
+      Confirmation:
+        - test1
+
+cozy-stack instances add --apps drive,photos,collect,settings,onboarding --passphrase test "ks300508.kimsufi.com"
+
+
+https://github.com/sys0dm1n/ansible-postfix/blob/master/postfix-install.yml
+
+
+./letsencrypt-auto certonly -d ks300508.kimsufi.com \
+-d drive.ks300508.kimsufi.com \
+-d settings.ks300508.kimsufi.com \
+-d photos.ks300508.kimsufi.com \
+-d oneboarding.ks300508.kimsufi.com --rsa-key-size 4096 --hstsl
+
+
+192.168.252.22 cozy.tools
+192.168.252.22 drive.cozy.tools
+192.168.252.22 photos.cozy.tools
+192.168.252.22 settings.cozy.tools
+192.168.252.22 oneboarding.cozy.tools
+192.168.252.22 collect.cozy.tool
+
+###Le chemin de mes certificats Let's Encrypt :
+ssl_certificate /etc/letsencrypt/live/ks300508.kimsufi.com/fullchain.pem;
+ssl_certificate_key /etc/letsencrypt/live/ks300508.kimsufi.com/privkey.pem;
+
+
+
+./letsencrypt-auto certonly -d ks300508.kimsufi.com \
+-d drive.ks300508.kimsufi.com \
+-d settings.ks300508.kimsufi.com \
+-d photos.ks300508.kimsufi.com \
+-d oneboarding.ks300508.kimsufi.com --rsa-key-size 4096 --hstsl
+
+
+192.168.252.22 cozy.tools
+192.168.252.22 drive.cozy.tools
+192.168.252.22 photos.cozy.tools
+192.168.252.22 settings.cozy.tools
+192.168.252.22 oneboarding.cozy.tools
+192.168.252.22 collect.cozy.tool
+
+###Le chemin de mes certificats Let's Encrypt :
+ssl_certificate /etc/letsencrypt/live/ks300508.kimsufi.com/fullchain.pem;
+ssl_certificate_key /etc/letsencrypt/live/ks300508.kimsufi.com/privkey.pem;
+
+echo "Test mail from postfix" | mail -s "Test Postfix" adresse@mail.com
+
+
+192.168.252.79 drive.cozy.tools
+192.168.252.79 photos.cozy.tools
+192.168.252.79 collect.cozy.tools
+192.168.252.79 settings.cozy.tools
+192.168.252.79 onboarding.cozy.tools
+
+
+curl -X PUT "http://admin:admin@localhost:5984/_node/couchdb@localhost/_config/admins/cozy" -d "\"admin\""
+
+
+curl -X PUT http://localhost:5984/_config/admins/admin -d '"admin"'
+
+
+./couchbase-cli cluster-init -c localhost:5984 -u adi -p old_password --cluster-init-username=new_user --cluster-init-password=new_password

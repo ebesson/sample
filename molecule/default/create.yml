@@ -1,0 +1,27 @@
+---
+- name: Create
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  no_log: "{{ not lookup('env', 'MOLECULE_DEBUG') | bool }}"
+  vars:
+    molecule_file: "{{ lookup('env', 'MOLECULE_FILE') }}"
+    molecule_yml: "{{ lookup('file', molecule_file) | from_yaml }}"
+  tasks:
+    - name: Create molecule instance(s)
+      lxd_container:
+        name: "{{ item.name }}"
+        state: started
+        source:
+          type: image
+          mode: pull
+          server: https://images.linuxcontainers.org
+          protocol: lxd
+          alias: "{{ item.lxd_image }}"
+        profiles: ["default"]
+        wait_for_ipv4_addresses: True
+        timeout: 600
+      with_items: "{{ molecule_yml.platforms }}"
+    - name: Add privileged mode to container
+      shell: lxc config set "{{ item.name }}" security.privileged true
+      with_items: "{{ molecule_yml.platforms }}"

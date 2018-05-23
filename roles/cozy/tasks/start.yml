@@ -1,0 +1,13 @@
+---
+- name: Ensure cozy-stack is restarted and set to start on boot.
+  systemd:
+    state: started
+    daemon_reload: "yes"
+    enabled: true
+    name: cozy-stack
+
+- name: Make sure cozy is responding
+  wait_for:
+    port: 8080
+    delay: 3
+    timeout: 90

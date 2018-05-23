@@ -1,0 +1,17 @@
+# Molecule managed
+
+---
+all:
+  hosts:
+    cozy-instance-stretch:
+      ansible_connection: lxd
+cozy:
+  hosts:
+    cozy-instance-stretch:
+      ansible_connection: lxd
+molecule:
+  hosts:
+    cozy-instance-stretch:
+      ansible_connection: lxd
+ungrouped:
+  vars: {}

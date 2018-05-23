@@ -1,0 +1,12 @@
+# {{ ansible_managed }}
+[Unit]
+Description=Cozy service
+Requires=couchdb.service
+
+[Service]
+Type=simple
+User=cozy-stack
+ExecStart=
+
+Restart=on-failure
+RestartSec=10

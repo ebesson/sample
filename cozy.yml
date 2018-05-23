@@ -1,0 +1,17 @@
+---
+- hosts: all
+  gather_facts: False
+  tasks:
+    - name: Install python for Ansible
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y  python2.7 python-minimal sudo)
+      changed_when: False
+
+- hosts: cozy
+  become: True
+  roles:
+    - common
+    - couchdb
+    - cozy
+    - nginx
+    - cozy-coclyco
+    - postfix
