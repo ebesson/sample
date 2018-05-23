@@ -7,7 +7,7 @@ before_install:
   - sudo apt-get -qq update
   - sudo apt install snapd
   - sudo snap install lxd
-  - sudo usermod -a -G lxd travis
+  - sudo /usr/lib/lxd/lxd-bridge start
   - sudo su travis -c 'lxd init --auto';
   - sudo su travis -c 'lxc network create lxdbr0';
   - sudo su travis -c 'lxc network attach-profile lxdbr0 default eth0';
