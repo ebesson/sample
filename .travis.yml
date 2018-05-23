@@ -8,6 +8,8 @@ before_install:
   - sudo apt install -t trusty-backports lxd lxd-client lxc-dev
   - sudo lxd init --auto;
   - sudo usermod -a -G lxd travis
+  - sudo su travis -c 'lxc network create lxdbr0';
+  - sudo su travis -c 'lxc network attach-profile lxdbr0 default eth0';
 install:
   - sudo pip install ansible==2.4.2.0
   - sudo pip install testinfra==1.10.1
